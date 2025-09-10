@@ -1,0 +1,38 @@
+header ul {
+    list-style: none;
+    display: flex;
+}
+
+header ul li {
+    margin-right: 30px;
+    color: gray;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+ul li:hover {
+    color: black;
+}
+
+.card {
+    margin: 20px;
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+input {
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+footer ul{
+    list-style: none;
+}
+
+footer ul li {
+    color: gray;
+    font-size: 17px;
+}
