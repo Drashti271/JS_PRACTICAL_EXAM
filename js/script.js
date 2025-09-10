@@ -10,6 +10,14 @@ let products = [];
 let isEditing = false;
 let editIndex = null;
 
+window.addEventListener('DOMContentLoaded', () => {
+    const storedProducts = localStorage.getItem('products');
+    if (storedProducts) {
+        products = JSON.parse(storedProducts);
+        renderProducts(products);
+    }
+});
+
 submitBtn.addEventListener('click', () => {
     const title = titleInput.value.trim();
     const price = priceInput.value.trim();
@@ -32,6 +40,7 @@ submitBtn.addEventListener('click', () => {
         products.push(product);
     }
 
+    saveToLocalStorage(); 
     renderProducts(products);
     clearForm();
 });
@@ -88,6 +97,7 @@ function editProduct(index) {
 function deleteProduct(index) {
     if (confirm('Are you sure you want to delete this product?')) {
         products.splice(index, 1);
+        saveToLocalStorage(); 
         renderProducts(products);
     }
 }
@@ -102,3 +112,15 @@ searchInput.addEventListener('input', () => {
 
     renderProducts(filteredProducts);
 });
+
+function saveToLocalStorage() {
+    localStorage.setItem('products', JSON.stringify(products));
+}
+
+function clearAllProducts() {
+    if (confirm('This will delete all products. Continue?')) {
+        products = [];
+        saveToLocalStorage();
+        renderProducts(products);
+    }
+}
